@@ -4,6 +4,9 @@ description: "Generate a Product Requirements Document (PRD) for a new feature. 
 user-invocable: true
 ---
 
+> **Attribution:** This PRD template is adapted from the OpenClaw project (MIT License). See `THIRD_PARTY_NOTICES.md`.
+
+
 # PRD Generator
 
 Create detailed Product Requirements Documents that are clear, actionable, and suitable for implementation.

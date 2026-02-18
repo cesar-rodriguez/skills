@@ -48,6 +48,33 @@ These are written as simple, readable `SKILL.md` templates. You can copy/paste t
 - Use `skills/ci-watcher/` to efficiently wait for checks.
 - Use `skills/merge-conflict-resolver/` for conflict handling.
 
+## Run this in X (quickstart)
+
+Same workflow, different interface. The only non-negotiable: **don’t skip the PRD and acceptance criteria**.
+
+### A) Claude Code
+1. Generate a PRD using `skills/prd/SKILL.md`.
+2. Generate epic + issues from the PRD using `skills/epic-decomposer/SKILL.md`.
+3. Generate an execution plan (phases/lanes/WIP) using `skills/execution-plan-generator/SKILL.md`.
+4. Implement issue-by-issue (paste the issue body + AC into Claude Code; run tests).
+5. Do a separate review pass using `skills/pr-reviewer/SKILL.md`.
+
+### B) Cursor
+- Put the PRD + issue acceptance criteria in the repo under `docs/`.
+- Keep diffs small, run tests often.
+- Before opening a PR, run the reviewer checklist (from `skills/pr-reviewer/`).
+
+### C) Codex CLI
+- Run Codex with: issue body + acceptance criteria + test command.
+- Then run a second pass as “reviewer” using `skills/pr-reviewer/SKILL.md`.
+
+### D) GitHub + terminal only
+- You can still follow the artifacts: PRD doc → GitHub Issues → execution plan in Markdown → PRs.
+
+## Licensing & attribution
+
+See `LICENSE` and `THIRD_PARTY_NOTICES.md`.
+
 ## Non-proprietary
 
 This repo intentionally contains **no company secrets**, tokens, internal URLs, or private architecture. Examples are generic (e.g., `owner/repo`).
