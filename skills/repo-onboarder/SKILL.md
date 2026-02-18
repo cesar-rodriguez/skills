@@ -10,7 +10,7 @@ inputs:
   repo: "GitHub repo (org/name or full URL)"
   force: "Regenerate even if cached (optional, default: false)"
 outputs:
-  briefing: "Markdown briefing file at ~/.openclaw/workspace/repo-briefings/<org>-<repo>.md (or $WORKSPACE/repo-briefings/<org>-<repo>.md)"
+  briefing: "Markdown briefing file at $WORKSPACE/repo-briefings/<org>-<repo>.md (default: ~/.skills-workspace)"
 tools:
   - git
   - gh
@@ -21,6 +21,8 @@ tools:
   - head
   - jq
 ---
+
+WORKSPACE note: The scripts use $WORKSPACE for outputs. If unset, it defaults to `~/.skills-workspace`.
 
 # repo-onboarder
 
@@ -49,7 +51,7 @@ bash skills/repo-onboarder/scripts/generate_briefing.sh https://github.com/owner
 6. **Map modules** — Language-specific package/module graph
 7. **Detect release tooling** — goreleaser (.goreleaser.yml), Docker (Dockerfile), Makefile release targets, GitHub release workflows
 8. **Identify tracker** — Check for Linear config, GitHub Issues usage, or project boards
-9. **Output briefing** — Cached at `~/.openclaw/workspace/repo-briefings/<org>-<repo>.md (or $WORKSPACE/repo-briefings/<org>-<repo>.md)`
+9. **Output briefing** — Cached at `$WORKSPACE/repo-briefings/<org>-<repo>.md (default: ~/.skills-workspace)`
 
 The briefing now includes a **Release & CI** section covering: release tooling, CI workflows, required checks, and deployment patterns. This prevents issues like missing ldflags or Dockerfiles when creating release-related issues.
 
@@ -59,4 +61,4 @@ The briefing contains: Quick Facts, Directory Layout, Conventions, Hot Files, Ke
 
 ## Cache
 
-Briefings are cached at `~/.openclaw/workspace/repo-briefings/<org>-<repo>.md (or $WORKSPACE/repo-briefings/<org>-<repo>.md)`. Use `--force` to regenerate. The script prints the output path on completion.
+Briefings are cached at `$WORKSPACE/repo-briefings/<org>-<repo>.md (default: ~/.skills-workspace)`. Use `--force` to regenerate. The script prints the output path on completion.

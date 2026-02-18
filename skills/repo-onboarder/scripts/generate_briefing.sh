@@ -4,7 +4,7 @@ set -euo pipefail
 # repo-onboarder: Generate compact repo briefing for subagent prompt injection
 # Usage: generate_briefing.sh <org/repo | github-url> [--force]
 
-WORKSPACE="${WORKSPACE:-${HOME}/.openclaw/workspace}"
+WORKSPACE="${WORKSPACE:-${HOME}/.skills-workspace}"
 BRIEFINGS_DIR="${WORKSPACE}/repo-briefings"
 CLONE_BASE="/tmp/repo-onboarder"
 

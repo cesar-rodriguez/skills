@@ -22,6 +22,9 @@ Autonomous execution engine for GitHub or Linear-based implementation sprints. R
 
 ## Prerequisites
 
+**WORKSPACE:** If you use the optional progress/temp-file conventions below, set `WORKSPACE` (default: `~/.skills-workspace`).
+
+
 1. **Execution plan file** in the workspace (e.g. `sprint-plans/my-plan.md`)
 2. **Issues already created** with acceptance criteria (GitHub Issues or Linear — the plan's `Config` section specifies which tracker)
 3. **Repo cloned** and accessible
@@ -212,14 +215,14 @@ After each issue merges:
 ```bash
 # Remove the subagent's temp clone directory
 rm -rf /tmp/{issue_id}-*
-rm -rf ~/.openclaw/workspace/tmp/{repo_name}-{issue_id}* 2>/dev/null
+rm -rf $WORKSPACE/tmp/{repo_name}-{issue_id}* 2>/dev/null
 ```
 
 After all issues merge:
 ```bash
 # Clean up all sprint-related temp dirs
 find /tmp -maxdepth 1 -name "*{sprint_name}*" -type d -exec rm -rf {} +
-find ~/.openclaw/workspace/tmp -name "*{repo_name}*" -type d -exec rm -rf {} + 2>/dev/null
+find $WORKSPACE/tmp -name "*{repo_name}*" -type d -exec rm -rf {} + 2>/dev/null
 ```
 
 ### 6. Completion
