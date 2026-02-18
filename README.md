@@ -9,6 +9,32 @@ A public, tool-agnostic collection of **LLM workflow “skills”** I use to shi
 
 These are written as simple, readable `SKILL.md` templates. You can copy/paste them into Claude Code, Cursor, Codex CLI, etc.
 
+## Install (optional): Skills CLI
+
+If you use the community **Skills CLI**, you can install these templates into your local skills directory.
+
+```bash
+# Install the CLI (one-time)
+npm install -g skills
+
+# Install Cesar’s workflow skills (global)
+npx skills add cesar-rodriguez/skills \
+  --skill prd \
+  --skill epic-decomposer \
+  --skill execution-plan-generator \
+  --skill repo-onboarder \
+  --skill sprint-runner \
+  --skill pr-reviewer \
+  --skill merge-conflict-resolver \
+  --skill ci-watcher \
+  --global -y
+```
+
+Notes:
+- Remove `--global` if you want a per-project/per-user install.
+- Remove `-y` if you want interactive prompts.
+- If you don’t use Skills CLI: just browse this repo and copy/paste the `SKILL.md` templates.
+
 ## What’s in here
 
 ### Requirements & planning
