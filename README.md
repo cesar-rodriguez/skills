@@ -52,24 +52,46 @@ These are written as simple, readable `SKILL.md` templates. You can copy/paste t
 
 Same workflow, different interface. The only non-negotiable: **don’t skip the PRD and acceptance criteria**.
 
+### Recommended team convention
+Keep the artifacts in the repo so everyone shares the same ground truth:
+- `docs/prd/<feature>.md`
+- `docs/plan/<epic>.md`
+- `docs/progress/<epic>.md` (optional run ledger)
+
 ### A) Claude Code
 1. Generate a PRD using `skills/prd/SKILL.md`.
 2. Generate epic + issues from the PRD using `skills/epic-decomposer/SKILL.md`.
 3. Generate an execution plan (phases/lanes/WIP) using `skills/execution-plan-generator/SKILL.md`.
-4. Implement issue-by-issue (paste the issue body + AC into Claude Code; run tests).
+4. Implement issue-by-issue (paste the issue body + AC verbatim; run tests).
 5. Do a separate review pass using `skills/pr-reviewer/SKILL.md`.
 
 ### B) Cursor
-- Put the PRD + issue acceptance criteria in the repo under `docs/`.
+- Put the PRD and plan in `docs/` so the agent always sees the same requirements.
 - Keep diffs small, run tests often.
 - Before opening a PR, run the reviewer checklist (from `skills/pr-reviewer/`).
 
 ### C) Codex CLI
-- Run Codex with: issue body + acceptance criteria + test command.
+- Paste: issue body + acceptance criteria + test command.
+- Add constraints: small diffs, update tests, deterministic output.
 - Then run a second pass as “reviewer” using `skills/pr-reviewer/SKILL.md`.
 
 ### D) GitHub + terminal only
-- You can still follow the artifacts: PRD doc → GitHub Issues → execution plan in Markdown → PRs.
+You can still follow the artifacts: PRD doc → GitHub Issues → execution plan in Markdown → PRs.
+
+Helpful `gh` commands:
+```bash
+# Create issues
+gh issue create --repo owner/repo --title "..." --body "..."
+
+# Create PR
+gh pr create --repo owner/repo --title "..." --body "Closes #N" --fill
+
+# Watch CI
+gh pr checks <pr> --repo owner/repo
+
+# Merge when green
+gh pr merge <pr> --repo owner/repo --merge --delete-branch
+```
 
 ## Licensing & attribution
 
