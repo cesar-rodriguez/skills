@@ -18,7 +18,7 @@ Autonomous execution engine for GitHub or Linear-based implementation sprints. R
 
 - You have an **execution plan** (markdown file with issues, dependency graph, lane assignments, acceptance criteria)
 - You want autonomous end-to-end implementation without Opus coordination overhead
-- Triggered via OpenClaw `sessions_spawn` (or any equivalent agent runner), or a scheduler/cron
+- Triggered via your preferred agent runner (or a scheduler/cron)
 
 ## Prerequisites
 
@@ -258,9 +258,9 @@ The runner stops and reports when:
 
 ## Spawning the Runner
 
-**Example (OpenClaw):**
+**Example:**
 ```
-sessions_spawn(
+<agent_runner_spawn>(
   task: "Run sprint: sprint-plans/sg-policy-v2.md — follow skills/sprint-runner/SKILL.md",
   model: "codex",
   label: "sprint-runner"

@@ -312,7 +312,7 @@ When generating dev prompts for each issue, follow these rules to avoid subagent
 2. **Reference code examples via files** — if you need to show patterns, write them to a temp file and reference the path
 3. **Be specific about file paths** — `Create pkg/adapters/terraform/adapter.go` not `Create the adapter file`
 4. **Include the test command** — `Run: go test ./pkg/adapters/terraform/...` so the agent knows how to verify
-5. **Avoid `$()`, backtick substitution, or complex quoting** in prompt text — these cause shell parse errors when the prompt is passed through `sessions_spawn`
+5. **Avoid `$()`, backtick substitution, or complex quoting** in prompt text — these cause shell parse errors when the prompt is passed through an agent runner / CLI wrapper
 
 **Anti-pattern (breaks):**
 ```

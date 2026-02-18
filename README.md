@@ -7,7 +7,7 @@ A public, tool-agnostic collection of **LLM workflow “skills”** I use to shi
 - Create a **dependency-aware execution plan** (phases / lanes / WIP)
 - Execute with **dev + reviewer** loops, CI gating, and conflict recovery
 
-These are written in an **OpenClaw skill style** (a single `SKILL.md` per skill), but you don’t need OpenClaw to benefit from them: you can copy/paste the prompts into Claude Code, Cursor, Codex CLI, etc.
+These are written as simple, readable `SKILL.md` templates. You can copy/paste them into Claude Code, Cursor, Codex CLI, etc.
 
 ## What’s in here
 
@@ -31,14 +31,14 @@ These are written in an **OpenClaw skill style** (a single `SKILL.md` per skill)
 
 2) **Epic + issues**
 - Use `skills/epic-decomposer/SKILL.md` to produce:
-  - a parent epic
-  - child issues with crisp acceptance criteria
+ - a parent epic
+ - child issues with crisp acceptance criteria
 
 3) **Execution plan**
 - Use `skills/execution-plan-generator/SKILL.md` to produce:
-  - phases (dependency boundaries)
-  - lanes (parallel streams)
-  - WIP limits
+ - phases (dependency boundaries)
+ - lanes (parallel streams)
+ - WIP limits
 
 4) **Implement + review loop**
 - Use Codex CLI / Claude Code / Cursor for implementation.
